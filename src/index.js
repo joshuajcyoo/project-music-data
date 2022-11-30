@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 
+import {fetchAllAlbums, fetchAlbum, fetchAllSongs, fetchSong} from './api';
 import Root from './Routes/Root';
+import Home from './Routes/Home';
+import Scores from './Routes/Scores';
+import SpotifyStats from './Routes/SpotifyStats';
+import Album from './Routes/Album';
+import AlbumSongs from './Routes/AlbumSongs';
+import Song from './Routes/Song';
 
 const router = createBrowserRouter([
   {
@@ -21,54 +27,61 @@ const router = createBrowserRouter([
       {
         path: "/stats",
         element: <SpotifyStats />,
-        loader({ }) {
+        loader({}) {
           return;
         },
-        children: [
-          {
-            path: "/stats/:id/comments",
-            element: <Comments />
-          }
-        ]
+      //   children: [
+      //     {
+      //       path: "/stats/:id/comments",
+      //       element: <Comments />
+      //     }
+      //   ]
       },
       {
         path: "/scores",
         element: <Scores />,
-        loader ({}) {
-          return;
+        loader () {
+          return fetchAllAlbums();
+        },
+        children: [
+      //     {
+      //       path: "/scores/comments",
+      //       element: <Comments />
+      //     },
+        ]
+      },
+      {
+        path: "/albums/:id",
+        element: <Album />,
+        loader ({ params }) {
+          return fetchAlbum(params.id);
         },
         children: [
           {
-            path: "/scores/:id/comments",
-            element: <Comments />
-          },
-          {
-            path: "/scores/:album",
-            element: <Album />,
-            loader ({}) {
-              return;
-            },
-            children: [
-              {
-                path: "/scores/:album/:song",
-                element: <Song />,
-                loader ({}) {
-                  return; 
-                }
-              }
-            ]
+            path: "/albums/:id/songs",
+            element: <AlbumSongs />,
+            loader () {
+              return fetchAllSongs();
+            }
           }
         ]
       },
       {
-        path: "/admin",
-        element: <Admin />,
-        loader ({}) {
-          return;
+        path: "/songs/:id",
+        element: <Song />,
+        loader ({ params }) {
+          return fetchSong(params.id); 
         }
       }
+      // {
+      //   path: "/admin",
+      //   element: <Admin />,
+      //   loader ({}) {
+      //     return;
+      //   }
+      // }
     ]
-  }
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

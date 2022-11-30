@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Album.js */
+table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 10%;
+}
+.th-score {
+  width: 6%;
+  background-color: black;
+  color: white;
+}
+.th-album, .th-artist {
+  width: 30%;
+}
+.th-release {
+  width: 17%;
+}
+
+/* AlbumSongs.js */
+.th-song-number {
+  width: 3%;
+}

@@ -4,8 +4,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
-import { toast } from 'react-toastify';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {fetchAllAlbums, fetchAlbum, fetchAllSongs, fetchSong, fetchAllComments, postComment} from './api';
 import Root from './Routes/Root';
 import Home from './Routes/Home';
@@ -75,16 +75,16 @@ const router = createBrowserRouter([
                 children: [
                   {
                     path: "/albums/:id/comment",
-                    element: <PostComment/>,
-                    action({ request, params }) {
-                      return request.formData().then((formData) => {
-                        return postComment(params.id, formData.get("comment-name"), formData.get("comment-body"), formData.get("comment-time")).then(() => {
-                          toast.success("Your comment was successfully posted.");
+                    element: <PostComment/>
+                    // action({ request, params }) {
+                    //   return request.formData().then((formData) => {
+                    //     return postComment(params.id, formData.get("comment-name"), formData.get("comment-body"), formData.get("comment-time")).then(() => {
+                    //       toast.success("Your comment was successfully posted.");
 
-                          return redirect(`/albums/${params.id}/`);
-                        })
-                      })
-                    }
+                    //       return redirect(`/albums/${params.id}/`);
+                    //     })
+                    //   })
+                    // }
                   }
                 ]
               }

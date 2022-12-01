@@ -28,7 +28,7 @@ export function fetchAllComments() {
 
 export function postComment(albumId, name, comment, timestamp) {
     return fetch(
-        `https://localhost:3000/comments`, {
+        `http://localhost:3000/comments`, {
             method: "POST",
             body: JSON.stringify({
                 album_id: albumId,

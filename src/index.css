@@ -36,3 +36,14 @@ table {
 .th-song-number {
   width: 3%;
 }
+
+.post-comment {
+  width: 50%;
+}
+
+.display-comments {
+  margin-top: 3%;
+}
+.comment {
+  border: 1px solid black;
+}

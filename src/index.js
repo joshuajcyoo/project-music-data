@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 
-import {fetchAllAlbums, fetchAlbum, fetchAllSongs, fetchSong} from './api';
+import {fetchAllAlbums, fetchAlbum, fetchAllSongs, fetchSong, fetchAllComments, postComment} from './api';
 import Root from './Routes/Root';
 import Home from './Routes/Home';
 import Scores from './Routes/Scores';
@@ -14,6 +14,8 @@ import SpotifyStats from './Routes/SpotifyStats';
 import Album from './Routes/Album';
 import AlbumSongs from './Routes/AlbumSongs';
 import Song from './Routes/Song';
+import Comments from './Routes/Comments';
+import PostComment from './Routes/PostComment';
 
 const router = createBrowserRouter([
   {
@@ -51,19 +53,43 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: "/albums/:id",
+        path: "/albums/:id/",
         element: <Album />,
         loader ({ params }) {
           return fetchAlbum(params.id);
         },
         children: [
           {
-            path: "/albums/:id/songs",
+            path: "/albums/:id/",
             element: <AlbumSongs />,
             loader () {
               return fetchAllSongs();
-            }
-          }
+            },
+            children: [
+              {
+                path: "/albums/:id/",
+                element: <Comments/>,
+                loader () {
+                  return fetchAllComments();
+                },
+                children: [
+                  {
+                    path: "/albums/:id/comment",
+                    element: <PostComment/>,
+                    action({ request, params }) {
+                      return request.formData().then((formData) => {
+                        return postComment(params.id, formData.get("comment-name"), formData.get("comment-body"), formData.get("comment-time")).then(() => {
+                          toast.success("Your comment was successfully posted.");
+
+                          return redirect(`/albums/${params.id}/`);
+                        })
+                      })
+                    }
+                  }
+                ]
+              }
+            ]
+          },
         ]
       },
       {

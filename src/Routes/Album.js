@@ -1,4 +1,4 @@
-import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
+import { Outlet, useLoaderData, useParams } from "react-router-dom";
 
 export default function Album() {
     const album = useLoaderData();
@@ -16,9 +16,9 @@ export default function Album() {
 
             {/* Implement reusable component for Spotify stats here. */}
 
-            <Link to={`/albums/${albumId}/songs`} className="link">
+            {/* <Link to={`/albums/${albumId}/songs`} className="link">
                 Show All Songs
-            </Link>
+            </Link> */}
 
             <Outlet/>
         </>

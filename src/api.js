@@ -6,6 +6,8 @@ function fetchFunction(url) {
         });
 }
 
+// FP Req: GET call
+
 export function fetchAllAlbums() {
     return fetchFunction("http://localhost:3000/albums");
 }
@@ -26,22 +28,6 @@ export function fetchAllComments() {
     return fetchFunction("http://localhost:3000/comments");
 }
 
-export function postComment(albumId, name, comment, timestamp) {
-    return fetch(
-        `http://localhost:3000/comments`, {
-            method: "POST",
-            body: JSON.stringify({
-                album_id: albumId,
-                name: name, 
-                body: comment,
-                timestamp: timestamp,
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-        }
-    )
-    .then((response) => {
-        return response.json();
-    })
+export function fetchAllUsers() {
+    return fetchFunction("http://localhost:3000/users");
 }

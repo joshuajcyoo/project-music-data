@@ -16,6 +16,15 @@ export default function Home() {
                 Explore Data by (Spotify) Stats
             </button>
         </Link>
+
+        <br/>
+        <br/>
+
+        <Link to={`/admin`} className="admin-link">
+            <button type="button" className="btn btn-sm btn-warning">
+                Admin (Login)
+            </button>
+        </Link>
     </>
     );
 }

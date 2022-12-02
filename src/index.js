@@ -4,9 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider, redirect } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {fetchAllAlbums, fetchAlbum, fetchAllSongs, fetchSong, fetchAllComments, postComment} from './api';
+import {fetchAllAlbums, fetchAlbum, fetchAllSongs, fetchSong, fetchAllComments, fetchAllUsers} from './api';
 import Root from './Routes/Root';
 import Home from './Routes/Home';
 import Scores from './Routes/Scores';
@@ -16,6 +14,7 @@ import AlbumSongs from './Routes/AlbumSongs';
 import Song from './Routes/Song';
 import Comments from './Routes/Comments';
 import PostComment from './Routes/PostComment';
+import Admin from "./Routes/Admin";
 
 const router = createBrowserRouter([
   {
@@ -99,15 +98,22 @@ const router = createBrowserRouter([
           return fetchSong(params.id); 
         }
       }
-      // {
-      //   path: "/admin",
-      //   element: <Admin />,
-      //   loader ({}) {
-      //     return;
-      //   }
-      // }
     ]
   },
+  // {
+  //   path: "/admin",
+  //   element: <Admin />,
+  //   loader ({}) {
+  //     return;
+  //   }
+  // }
+  {
+    path: "/admin",
+    element: <Admin />,
+    loader () {
+      return fetchAllUsers();
+    }
+  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

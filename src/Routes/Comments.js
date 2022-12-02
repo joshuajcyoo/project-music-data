@@ -1,7 +1,8 @@
-import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
+import { Outlet, useLoaderData, useParams } from "react-router-dom";
 import { useState } from "react";
 import PostComment from "./PostComment";
 
+// FP Req: Comment System
 export default function Comments() {
     const allComments = useLoaderData();
     const params = useParams();
@@ -15,18 +16,25 @@ export default function Comments() {
     
     const [albumComments, setAlbumComments] = useState(allComments.filter(comment => comment.album_id == albumId).sort(compare));
 
-    console.log(albumComments);
-    // albumComments = allComments.filter(comment => comment.album_id == albumId);
-
     const addComment = (name, body, timestamp) => {
-        // add or re-render page with new comment data
         const comment = {
             name,
             body,
             timestamp
         };
-
         setAlbumComments([comment, ...albumComments]);
+    }
+
+    const deleteComment = async (id) => {
+        // FP Req: DELETE call
+        await fetch(
+            `http://localhost:3000/comments/${id}`, 
+            {method: "DELETE"}
+        );
+        
+        setAlbumComments(albumComments.filter(function(obj) {
+            return obj.id != id;
+        }));
     }
 
     return (
@@ -42,6 +50,12 @@ export default function Comments() {
                         <div><u>User: {comment.name}</u></div>
                         <p>{comment.body}</p>
                         <div>Posted on {comment.timestamp}</div>
+
+                        <button className="btn btn-danger btn-sm" 
+                            onClick={() => {
+                                deleteComment(comment.id);
+                            }}
+                        >Delete</button>
                     </div>
                 );
             })}

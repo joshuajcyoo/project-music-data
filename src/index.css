@@ -37,13 +37,21 @@ table {
   width: 3%;
 }
 
-.post-comment {
-  width: 50%;
-}
-
 .display-comments {
   margin-top: 3%;
+  width: 50%;
 }
 .comment {
   border: 1px solid black;
+}
+
+#admin {
+  padding-left: 2%;
+  padding-top: 2%;
+}
+#login-page {
+  width: 50%;
+}
+#login-button {
+  margin-top: 2%;
 }

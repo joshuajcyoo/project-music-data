@@ -30,6 +30,7 @@ export default function PostComment(props) {
             document.getElementById("name-error").className = "d-none text-danger"
             document.getElementById("body-error").className = "d-none text-danger"
 
+            // FP Req: POST call
             await fetch(
                 `http://localhost:3000/comments`, {
                 method: "POST",
@@ -42,7 +43,7 @@ export default function PostComment(props) {
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
                 },
-            }
+                }
             );
 
             onSubmit(name, body, timestamp);

@@ -13,15 +13,21 @@ code {
 }
 
 /* Album.js */
-table {
+#scores-table {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 
   margin-top: 10%;
 }
+#sort-score {
+  background: none;
+  border: none;
+  color: white;
+
+}
 .th-score {
-  width: 6%;
+  width: 8%;
   background-color: black;
   color: white;
 }
@@ -36,7 +42,13 @@ table {
 .th-song-number {
   width: 3%;
 }
+#album-songs-table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
+/* Admin.js */
 .display-comments {
   margin-top: 3%;
   width: 50%;
@@ -54,4 +66,55 @@ table {
 }
 #login-button {
   margin-top: 2%;
+}
+#admin-comments-header {
+  margin-top: 3%;
+}
+#admin-comments-form {
+  width: 50%;
+}
+#admin-select-all {
+  margin-left: 0.5%;
+}
+#admin-select-all-label {
+  margin-left: 0.3%;
+}
+.admin-comment-row {
+  border: 0.5px solid black;
+  padding: 0.5%;
+}
+.admin-comment-body {
+  margin-left: 0.3%;
+}
+.admin-comment-info {
+  padding-left: 2%;
+  font-size: 80%;
+}
+#edit-albums {
+  margin-top: 4%;
+}
+.th-album-admin {
+  width: 65%;
+}
+
+
+/* EditAlbum.js */
+#edit-album-form {
+  width: 50%;
+}
+.edit-album-click {
+  text-decoration: underline;
+  color: black;
+}
+
+/* Rating.js */
+#rating-container {
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 60%;
+}
+.rating-container-col {
+  border: 1px solid black;
+  text-align: center;
 }

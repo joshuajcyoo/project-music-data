@@ -39183,6 +39183,27 @@
       "body": "love the soft quality of the album",
       "timestamp": "Fri Dec 02 2022 04:46:50",
       "id": 28
+    },
+    {
+      "album_id": "2",
+      "name": "test delete",
+      "body": "bell",
+      "timestamp": "Sat Dec 03 2022 21:23:09",
+      "id": 29
+    },
+    {
+      "album_id": "92",
+      "name": "taytay",
+      "body": "not my favorite Taylor Swift album",
+      "timestamp": "Sun Dec 04 2022 05:26:26",
+      "id": 30
+    },
+    {
+      "album_id": "91",
+      "name": "1975fan",
+      "body": "i like Matty Healy's voice",
+      "timestamp": "Sun Dec 04 2022 05:32:03",
+      "id": 31
     }
   ],
   "users": [
@@ -39190,6 +39211,11 @@
       "id": 0,
       "email": "joshuajcyoo@gmail.com",
       "password": "password1234"
+    },
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "AdminAccess123"
     }
   ]
 }

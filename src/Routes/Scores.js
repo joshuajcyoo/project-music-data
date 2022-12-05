@@ -1,8 +1,19 @@
 import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Scores() {
-    let albums = useLoaderData();
-    console.log(albums);
+    const compareId = (a, b) => {        
+        return b.id - a.id;
+    }
+    const compareScore = (a, b) => {
+        return b.score - a.score;
+    }
+    
+    const [albums, setAlbums] = useState(useLoaderData().sort(compareId));
+
+    useEffect(() => {
+        console.log("Change");
+    }, [albums])
     
     return (
     <>
@@ -10,10 +21,12 @@ export default function Scores() {
             Chart Goes Here
         </div>
         <div>
-            <table className="table table-sm table-hover w-75">
+            <table id="scores-table" className="table table-sm table-hover w-75">
                 <thead>
-                    <tr>
-                        <th className="bg-dark th-score">Score</th>
+                    <tr id="scores-table-header">
+                        <th className="bg-dark th-score"><button id="sort-score" onClick={(() => {
+                            setAlbums(albums.sort(compareScore));
+                        })}>Score ▾</button></th>
                         <th className="th-album">Album</th>
                         <th className="th-artist">Artist</th>
                         <th className="th-release">Release Date</th>
@@ -53,7 +66,3 @@ export default function Scores() {
     </>
     );
 }
-
-// const filterAlbums = (albums, genre, year) => {
-    
-// }

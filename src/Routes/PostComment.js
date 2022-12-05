@@ -20,15 +20,30 @@ export default function PostComment(props) {
         const name = document.getElementById("comment-name").value;
         const body = document.getElementById("comment-body").value;
 
-        if (!name) {
-            document.getElementById("name-error").className = "d-block text-danger"
+        // FP Req: Custom Form Validation
+        if (!name && !body) {
+            document.getElementById("name-error").className = "d-block text-danger";
+            document.getElementById("body-error").className = "d-block text-danger";
+            document.getElementById("comment-name").className = "form-control form-control-sm is-invalid";
+            document.getElementById("comment-body").className = "form-control form-control-sm is-invalid";
         }
-        if (!body) {
-            document.getElementById("body-error").className = "d-block text-danger"
+        else if (!name) {
+            document.getElementById("name-error").className = "d-block text-danger";
+            document.getElementById("comment-name").className = "form-control form-control-sm is-invalid";
+            document.getElementById("body-error").className = "d-none text-danger";
+            document.getElementById("comment-body").className = "form-control form-control-sm";
         }
-        if (name && body) {
-            document.getElementById("name-error").className = "d-none text-danger"
-            document.getElementById("body-error").className = "d-none text-danger"
+        else if (!body) {
+            document.getElementById("body-error").className = "d-block text-danger";
+            document.getElementById("comment-body").className = "form-control form-control-sm is-invalid";
+            document.getElementById("name-error").className = "d-none text-danger";
+            document.getElementById("comment-name").className = "form-control form-control-sm";
+        }
+        else if (name && body) {
+            document.getElementById("name-error").className = "d-none text-danger";
+            document.getElementById("body-error").className = "d-none text-danger";
+            document.getElementById("comment-name").className = "form-control form-control-sm";
+            document.getElementById("comment-body").className = "form-control form-control-sm";
 
             // FP Req: POST call
             await fetch(
@@ -46,7 +61,12 @@ export default function PostComment(props) {
                 }
             );
 
-            onSubmit(name, body, timestamp);
+            const response = await fetch (`http://localhost:3000/comments`);
+            const commentData = await response.json();
+            const findPostedComment = commentData.filter(comment => comment.timestamp == timestamp);
+            const id = findPostedComment[0].id;
+
+            onSubmit(name, body, timestamp, id);
             toast.success('Comment successfully posted!', {
                 position: toast.POSITION.TOP_RIGHT
             });

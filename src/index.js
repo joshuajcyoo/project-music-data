@@ -15,6 +15,7 @@ import Song from './Routes/Song';
 import Comments from './Routes/Comments';
 import PostComment from './Routes/PostComment';
 import Admin from "./Routes/Admin";
+import EditAlbum from './Routes/EditAlbum';
 
 const router = createBrowserRouter([
   {
@@ -100,20 +101,22 @@ const router = createBrowserRouter([
       }
     ]
   },
-  // {
-  //   path: "/admin",
-  //   element: <Admin />,
-  //   loader ({}) {
-  //     return;
-  //   }
-  // }
   {
     path: "/admin",
     element: <Admin />,
     loader () {
       return fetchAllUsers();
-    }
-  }
+    },
+    // children: [
+    //   {
+    //     path: "/admin/edit/:id",
+    //     element: <EditAlbum />,
+    //     loader ({ params }) {
+    //       return fetchAlbum(params.id);
+    //     }
+    //   }
+    // ]
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

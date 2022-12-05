@@ -1,6 +1,8 @@
 import { Outlet, useLoaderData, useParams } from "react-router-dom";
 import { useState } from "react";
 import PostComment from "./PostComment";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // FP Req: Comment System
 export default function Comments() {
@@ -12,20 +14,22 @@ export default function Comments() {
         const aTime = new Date(a.timestamp);
         const bTime = new Date(b.timestamp);        
         return bTime - aTime;
-      }
+    }
     
     const [albumComments, setAlbumComments] = useState(allComments.filter(comment => comment.album_id == albumId).sort(compare));
 
-    const addComment = (name, body, timestamp) => {
+    const addComment = (name, body, timestamp, id) => {
         const comment = {
             name,
             body,
-            timestamp
+            timestamp,
+            id
         };
         setAlbumComments([comment, ...albumComments]);
     }
 
     const deleteComment = async (id) => {
+        
         // FP Req: DELETE call
         await fetch(
             `http://localhost:3000/comments/${id}`, 
@@ -35,6 +39,10 @@ export default function Comments() {
         setAlbumComments(albumComments.filter(function(obj) {
             return obj.id != id;
         }));
+
+        toast.error('Comment successfully deleted!', {
+            position: toast.POSITION.TOP_RIGHT
+        });
     }
 
     return (

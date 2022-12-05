@@ -10,7 +10,7 @@ export default function AlbumSongs() {
     
     return (
         <>
-            <table className="table table-sm table-hover w-50">
+            <table id="album-songs-table" className="table table-sm table-hover w-50">
                 <thead>
                     <tr>
                         <th className="th-song-number"></th>

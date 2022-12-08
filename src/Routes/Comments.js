@@ -51,7 +51,6 @@ export default function Comments() {
             
             <PostComment onSubmit={addComment}/>
 
-            <Outlet/>
             {albumComments.map((comment) => {
                 return (
                     <div className="comment">

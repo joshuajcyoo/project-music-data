@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditAlbum from "./EditAlbum";
-import AlbumSongs from "./AlbumSongs";
+import Modal from "../Modal";
 
 export default function Admin() { 
+    document.tite = "Admin";
+    
     // Login Variables
     const allUsers = useLoaderData();
     const emptyFields = "Fields must not be left blank.";
@@ -15,13 +17,12 @@ export default function Admin() {
     const [adminClass, setAdminClass] = useState("d-none");
 
     // Admin Variables
-    const params = useParams();
-    const albumId = params.id;
     const [isAlbumSet, setIsAlbumSet] = useState(false);
     const [allComments, setAllComments]  = useState([]);
     const [noneChecked, setNoneChecked] = useState(true);
     const [allChecked, setAllChecked] = useState(false);
     const [allAlbums, setAllAlbums] = useState([]);
+    const [modalState, setModalState] = useState(false);
     
     const compareTime = (a, b) => {
         const aTime = new Date(a.timestamp);
@@ -116,6 +117,8 @@ export default function Admin() {
     const deleteComments = async (event) => {
         event.preventDefault();
 
+        setModalState(false);
+
         const grabAllComments = document.getElementsByClassName('admin-comment-check');
         let selectedComments = [];
         for (let comment of grabAllComments) {
@@ -133,6 +136,7 @@ export default function Admin() {
         //         {method: "DELETE"}
         //     );
         }
+
         let toastMessage;
         if (selectedComments.length == grabAllComments.length) {
             toastMessage = "ALL COMMENTS SUCCESSFULLY DELETED!"
@@ -179,10 +183,10 @@ export default function Admin() {
 
     return (
         <div id="admin">
-        <ToastContainer />
+            <ToastContainer />
             {/* Login Page */}
             <div id="login-page" className={loginClass}>
-                <h1>Login</h1>
+                <h1>Admin Access</h1>
                 <form onSubmit={loginSubmit}>
                     <div className="form-group">
                         <label for="login-email">Email</label>
@@ -232,7 +236,14 @@ export default function Admin() {
                         Select comments to delete.
                     </div>) :
                     (<div>
-                        <button type="submit" className="btn btn-sm btn-danger">Delete</button>
+                        <button type="button" className="btn btn-sm btn-danger" onClick={() => {
+                            setModalState(!modalState);
+                        }}>Delete</button>
+                        {modalState && (
+                            <Modal 
+                                onClick={deleteComments}
+                                onClose={() => {setModalState(false)}}/>
+                        )}
                     </div>)
                 }
                 </form>

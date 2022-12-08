@@ -1,16 +1,18 @@
 import { Outlet, useLoaderData } from "react-router-dom";
 import Rating from "../Rating";
 
-export default function Album() {
+export default function Album() {    
     const album = useLoaderData();
 
+    document.title = album.album + " by " + album.artist;
+
     return (
-        <>
-            <h1>{album.album}</h1>
-            <h6>Artist: {album.artist}</h6>
-            <h6>Release Date: {album.release_date}</h6>
-            <h6>Genre: {album.genre}</h6>
-            <h5>Score: {album.score}</h5>
+        <div id="album">
+            <h1 id="album-title">Album: {album.album}</h1>
+            <h6 id="album-artist">Artist: {album.artist}</h6>
+            <h6 id="album-release-date">Release Date: {album.release_date}</h6>
+            <h6 id="album-genre">Genre: {album.genre}</h6>
+            <h5 id="score">Score: {album.score}</h5>
 
             <Rating 
                 type={"Album"}
@@ -27,6 +29,6 @@ export default function Album() {
             />
 
             <Outlet/>
-        </>
+        </div>
     );
 }

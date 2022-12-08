@@ -1,3 +1,26 @@
+@font-face {
+  font-family: Neue Haas Grotesk Medium;
+  src: url(Fonts/PragmaticaMedium.otf)
+}
+@font-face {
+  font-family: Vremena Grotesk Medium;
+  src: url(Fonts/vremenagroteskmedium.otf)
+}
+@font-face {
+  font-family: Vremena Grotesk Bold;
+  src: url(Fonts/vremenagroteskbold.otf)
+}
+@font-face {
+  font-family: Gogating Book;
+  src: url(Fonts/gogating_tin.ttf);
+}
+@font-face {
+  font-family: Gogating Book Bold;
+  src: url(Fonts/gogatingbold_a.ttf);
+}
+* {
+  font-family: Gogating Book Bold;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,30 +35,194 @@ code {
     monospace;
 }
 
-/* Album.js */
+/* Root.js */
+nav {
+  background-color: black;
+  padding: 0;
+}
+#brand {
+  font-size: 30px;
+  font-family: Gogating Book Bold;
+  background-color: black;
+  color: white;
+}
+#nav-brand, #logo, .navbar-brand {
+  background-color: black;
+}
+
+/* Home.js */
+#home {
+  background-color: black;
+}
+#home-top {
+  padding-top: 7%;
+  padding-bottom: 11%;
+  justify-content: center;
+
+  color: white;
+  opacity: 50%;
+  transition: opacity 1s;
+}
+#home-top:hover {
+  opacity: 100%;
+  transition: opacity 1s;
+}
+#home-msg {
+  font-size: 400%;
+}
+#home-buttons {
+  padding-top: 2%;
+}
+#home-button-scores-div {
+  margin-right: 1%;
+}
+.home-button {
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+.home-button:hover,
+.home-button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+.home-button:hover {
+  transform: translateY(-1px);
+}
+.home-button:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+#home-button-scores {
+  background-color: #52442D;
+}
+#home-button-stats {
+  background-color: #9B948B;
+}
+#home-bottom {
+  padding-top: 1%;
+  background-color: #EFB457;
+  padding-bottom: 11%;
+}
+#home-about-title {
+  padding-top: 3%;
+}
+#home-about-title, #home-about-title h2 {
+  background-color: #EFB457;
+  font-size: 175%;
+}
+#home-about {
+  padding-top: 1.5%;
+  background-color: #EFB457;
+  font-size: 125%;
+}
+
+/* Scores.js */
+#scores {
+  background-color: #EFB457;
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+#chart-wrapper {
+  display: block;
+  position: relative;
+  width: 70%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.3px solid white;
+}
+#filters-title {
+  margin-top: 2%;
+  font-size: 140%;
+  color: white;
+  margin-bottom: 0.5%;
+}
+#scores-dropdowns {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#select-genre {
+  width: 20%;
+  margin-right: 1%;
+}
+#select-year {
+  margin-left: 1%;
+  width: 20%;
+}
 #scores-table {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3%;
+  width: 60%;
 
-  margin-top: 10%;
+  border-top: 0.5px solid white;
+  background-color: white;
+  color: black;
 }
 #sort-score {
+  color: white;
+}
+.sort-albums-table {
   background: none;
   border: none;
+  font-weight: bold;
+  text-decoration: underline;
   color: white;
-
+}
+#scores-table-header {
+  background-color: black;
 }
 .th-score {
   width: 8%;
-  background-color: black;
-  color: white;
+  color: black;
 }
 .th-album, .th-artist {
   width: 30%;
 }
 .th-release {
   width: 17%;
+}
+#scores-table tr {
+  line-height: 14px;
+}
+#scores-table td, #scores-table a {
+  color: black;
+}
+
+/* Album.js */
+#album {
+  background-color: #9B948B;
+  color: white;
+  padding-top: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 /* AlbumSongs.js */
@@ -49,6 +236,10 @@ code {
 }
 
 /* Admin.js */
+#admin {
+  background-color: #EFB457;
+  padding-bottom: 50%;
+}
 .display-comments {
   margin-top: 3%;
   width: 50%;
@@ -67,6 +258,12 @@ code {
 #login-button {
   margin-top: 2%;
 }
+#admin-album-table {
+  color: white;
+}
+#admin-album-table tr {
+  line-height: 20px;
+}
 #admin-comments-header {
   margin-top: 3%;
 }
@@ -80,7 +277,7 @@ code {
   margin-left: 0.3%;
 }
 .admin-comment-row {
-  border: 0.5px solid black;
+  border: 0.5px solid white;
   padding: 0.5%;
 }
 .admin-comment-body {
@@ -101,10 +298,12 @@ code {
 /* EditAlbum.js */
 #edit-album-form {
   width: 50%;
+  color: white;
 }
 .edit-album-click {
   text-decoration: underline;
-  color: black;
+  color: white;
+  cursor: pointer;
 }
 
 /* Rating.js */
@@ -118,3 +317,8 @@ code {
   border: 1px solid black;
   text-align: center;
 }
+
+#skull-emoji {
+  width: 100%;
+}
+

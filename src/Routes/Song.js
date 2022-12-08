@@ -2,6 +2,8 @@ import { useLoaderData } from "react-router-dom";
 
 export default function Song() {
     const song = useLoaderData();
+
+    document.title = song.song_title + " / " + song.album;
     
     return (
         <>

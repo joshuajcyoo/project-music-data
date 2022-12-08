@@ -1,46 +1,55 @@
 
 // FP Req: Reusable Component w/ Prop(s)
 export default function Rating(props) {
-    const {number_of_tracks, length_formatted, length_seconds, tempo_bpm, popularity, danceability, energy, positiveness, speechiness, liveness} = props;
+    const {type, number_of_tracks, length_formatted, length_seconds, tempo_bpm, popularity, danceability, energy, positiveness, speechiness, liveness} = props;
+
+    let descriptor;
+    if (type == "Album") {
+        descriptor = "Average";
+    } 
+    else if (type == "Song") {
+        descriptor = "Song";
+        document.getElementById("rating-number-of-tracks").className="d-none col rating-container-col"
+    }
 
     return (
-        <div className="container" id="rating-container">
-            <div className="row">
-                <div class="col rating-container-col">
+        <div classNameName="container" id="rating-container">
+            <div classNameName="row">
+                <div className="col rating-container-col">
                     SPOTIFY STATS
                 </div>
             </div>
-            <div className="row">
-                <div class="col rating-container-col">
+            <div classNameName="row">
+                <div id="rating-number-of-tracks" className="col rating-container-col">
                     Number of Tracks: {number_of_tracks}
                 </div>
-                <div class="col rating-container-col">
-                    Average Length: {length_formatted} / {length_seconds} s
+                <div className="col rating-container-col">
+                    {descriptor} Length: {length_formatted} / {length_seconds} s
                 </div>
-                <div class="col rating-container-col">
-                    Average Tempo (BPM): {tempo_bpm}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col rating-container-col">
-                    Average Popularity: {popularity}
-                </div>
-                <div class="col rating-container-col">
-                    Average Danceability: {danceability}
-                </div>
-                <div class="col rating-container-col">
-                    Average Energy: {energy}
+                <div className="col rating-container-col">
+                    {descriptor} Tempo (BPM): {tempo_bpm}
                 </div>
             </div>
-            <div class="row">
-                <div class="col rating-container-col">
-                    Average Positiveness: {positiveness}
+            <div className="row">
+                <div className="col rating-container-col">
+                    {descriptor} Popularity: {popularity}
                 </div>
-                <div class="col rating-container-col">
-                    Average Speechiness: {speechiness}
+                <div className="col rating-container-col">
+                    {descriptor} Danceability: {danceability}
                 </div>
-                <div class="col rating-container-col">
-                    Average Liveness: {liveness}
+                <div className="col rating-container-col">
+                    {descriptor} Energy: {energy}
+                </div>
+            </div>
+            <div className="row">
+                <div className="col rating-container-col">
+                    {descriptor} Positiveness: {positiveness}
+                </div>
+                <div className="col rating-container-col">
+                    {descriptor} Speechiness: {speechiness}
+                </div>
+                <div className="col rating-container-col">
+                    {descriptor} Liveness: {liveness}
                 </div>
             </div>
         </div>

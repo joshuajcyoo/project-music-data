@@ -120,22 +120,29 @@ export default function Admin() {
         setModalState(false);
 
         const grabAllComments = document.getElementsByClassName('admin-comment-check');
+        let selectedCommentsIDs = [];
         let selectedComments = [];
         for (let comment of grabAllComments) {
             if (comment.checked) {
                 selectedComments.push(comment);
+                selectedCommentsIDs.push(parseInt(comment.value));
             }
         }
-        console.log(selectedComments);
 
         for (let commentDelete of selectedComments) {
             const commentId = parseInt(commentDelete.value);
             console.log(`http://localhost:3000/comments/${commentId}`);
-        //     await fetch(
-        //         `http://localhost:3000/comments/${commentId}`, 
-        //         {method: "DELETE"}
-        //     );
+            await fetch(
+                `http://localhost:3000/comments/${commentId}`, 
+                {method: "DELETE"}
+            );
         }
+
+        setAllComments(allComments.filter(comment => !selectedCommentsIDs.includes(comment.id)));
+        for (let comment of selectedComments) {
+            comment.checked = false;
+        }
+        setNoneChecked(true);
 
         let toastMessage;
         if (selectedComments.length == grabAllComments.length) {
@@ -179,11 +186,12 @@ export default function Admin() {
             document.getElementById("admin-select-all").indeterminate = true;
             document.getElementById("admin-select-all").checked = false;
         }
-    }, [noneChecked, allChecked, isAlbumSet])
+    }, [noneChecked, allChecked, isAlbumSet, allComments])
 
     return (
         <div id="admin">
             <ToastContainer />
+
             {/* Login Page */}
             <div id="login-page" className={loginClass}>
                 <h1>Admin Access</h1>
@@ -206,11 +214,28 @@ export default function Admin() {
 
             {/* Admin Page */}
             <div id="admin-page" className={adminClass}>
-                <h1>Admin</h1>
+                <h1>Admin Page</h1>
                 <h4 id="admin-comments-header">Manage Comments</h4>
                 <form onSubmit={deleteComments} id="admin-comments-form">
-                    <input className="form-check-input" type="checkbox" id="admin-select-all" onChange={selectAll}/>
-                    <label id="admin-select-all-label" class="form-check-label" for="admin-select-all">Select All</label>
+                    {noneChecked ? 
+                        (<div id="admin-comment-delete-top">
+                            <button type="button" className="btn btn-secondary" disabled>Delete</button>
+                        </div>) :
+                        (<div id="admin-comment-delete-top">
+                            <button type="button" className="btn btn-danger" onClick={() => {
+                                setModalState(!modalState);
+                            }}>Delete</button>
+                            {modalState && (
+                                <Modal 
+                                    onClick={deleteComments}
+                                    onClose={() => {setModalState(false)}}/>
+                            )}
+                        </div>)
+                    }
+                    <div id="admin-select-all-container">
+                        <input className="form-check-input" type="checkbox" id="admin-select-all" onChange={selectAll}/>
+                        <label id="admin-select-all-label" class="form-check-label" for="admin-select-all">Select All</label>
+                    </div>
                     {allComments.map((comment) => {
                         const checkId = "comment-check-id" + comment.id;
                         return (
@@ -221,10 +246,8 @@ export default function Admin() {
                                     id={checkId} 
                                     onChange={testCheckboxes}
                                 />
-                                <label class="form-check-label admin-comment-body" for={checkId}>
-                                    {comment.body}
-                                </label>
                                 <div className="admin-comment-info">
+                                    <div className="admin-comment-body">{comment.body}</div>
                                     <div><u>User</u>: {comment.name}</div>
                                     <div>{comment.timestamp}</div>
                                 </div>
@@ -232,11 +255,11 @@ export default function Admin() {
                         );
                     })}
                 {noneChecked ? 
-                    (<div>
-                        Select comments to delete.
+                    (<div id="admin-comment-delete-bottom">
+                        <button type="button" className="btn btn-secondary" disabled>Delete</button>
                     </div>) :
-                    (<div>
-                        <button type="button" className="btn btn-sm btn-danger" onClick={() => {
+                    (<div id="admin-comment-delete-bottom">
+                        <button type="button" className="btn btn-danger" onClick={() => {
                             setModalState(!modalState);
                         }}>Delete</button>
                         {modalState && (

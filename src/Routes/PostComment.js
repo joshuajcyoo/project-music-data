@@ -3,7 +3,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function PostComment(props) {
-    // use onSubmit prop to pass new commment data to Comments.js
     const { onSubmit } = props;
 
     const params = useParams();
@@ -17,33 +16,33 @@ export default function PostComment(props) {
         const d = new Date();
         const timestamp = d[Symbol.toPrimitive]('string').slice(0, 24);
 
-        const name = document.getElementById("comment-name").value;
-        const body = document.getElementById("comment-body").value;
+        const name = document.getElementById("post-comment-name").value;
+        const body = document.getElementById("post-comment-body").value;
 
         // FP Req: Custom Form Validation
         if (!name && !body) {
             document.getElementById("name-error").className = "d-block text-danger";
             document.getElementById("body-error").className = "d-block text-danger";
-            document.getElementById("comment-name").className = "form-control form-control-sm is-invalid";
-            document.getElementById("comment-body").className = "form-control form-control-sm is-invalid";
+            document.getElementById("post-comment-name").className = "form-control form-control-sm is-invalid";
+            document.getElementById("post-comment-body").className = "form-control form-control-sm is-invalid";
         }
         else if (!name) {
             document.getElementById("name-error").className = "d-block text-danger";
-            document.getElementById("comment-name").className = "form-control form-control-sm is-invalid";
+            document.getElementById("post-comment-name").className = "form-control form-control-sm is-invalid";
             document.getElementById("body-error").className = "d-none text-danger";
-            document.getElementById("comment-body").className = "form-control form-control-sm";
+            document.getElementById("post-comment-body").className = "form-control form-control-sm";
         }
         else if (!body) {
             document.getElementById("body-error").className = "d-block text-danger";
-            document.getElementById("comment-body").className = "form-control form-control-sm is-invalid";
+            document.getElementById("post-comment-body").className = "form-control form-control-sm is-invalid";
             document.getElementById("name-error").className = "d-none text-danger";
-            document.getElementById("comment-name").className = "form-control form-control-sm";
+            document.getElementById("post-comment-name").className = "form-control form-control-sm";
         }
         else if (name && body) {
             document.getElementById("name-error").className = "d-none text-danger";
             document.getElementById("body-error").className = "d-none text-danger";
-            document.getElementById("comment-name").className = "form-control form-control-sm";
-            document.getElementById("comment-body").className = "form-control form-control-sm";
+            document.getElementById("post-comment-name").className = "form-control form-control-sm";
+            document.getElementById("post-comment-body").className = "form-control form-control-sm";
 
             // FP Req: POST call
             await fetch(
@@ -70,8 +69,8 @@ export default function PostComment(props) {
             toast.success('Comment successfully posted!', {
                 position: toast.POSITION.TOP_RIGHT
             });
-            document.getElementById("comment-name").value = "";
-            document.getElementById("comment-body").value = "";
+            document.getElementById("post-comment-name").value = "";
+            document.getElementById("post-comment-body").value = "";
         }
     }
 
@@ -80,15 +79,15 @@ export default function PostComment(props) {
             <ToastContainer />
             <form onSubmit={submit}>
                 <div className="form-group">
-                    <label for="comment-name">Name</label>
-                    <input id="comment-name" name="comment-name" className="form-control form-control-sm" type="text" />
+                    <label for="post-comment-name">Name</label>
+                    <input id="post-comment-name" name="post-comment-name" className="form-control form-control-sm" type="text" />
                     <div id="name-error" className="d-none text-danger">{errorSelect}</div>
 
-                    <label for="comment-body">Body</label>
-                    <textarea id="comment-body" name="comment-body" className="form-control" rows="3" placeholder="Leave a comment..." />
+                    <label for="post-comment-body">Body</label>
+                    <textarea id="post-comment-body" name="post-comment-body" className="form-control" rows="3" placeholder="Leave a comment..." />
                     <div id="body-error" className="d-none text-danger">{errorSelect}</div>
                 </div>
-                <button id="comment-submit" className="btn btn-primary" type="submit">Submit</button>
+                <button id="comment-submit" className="btn btn-light" type="submit">Post Comment</button> 
             </form>
         </>
     )

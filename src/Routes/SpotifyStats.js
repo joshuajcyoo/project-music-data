@@ -55,9 +55,8 @@ export default function SpotifyStats() {
             y: {
                 min: 0,
                 max: 11,
-                labels: [0, 2, 4, 6, 10],
                 ticks: {
-                    color: 'white',
+                    color: ['red', 'red', 'yellow', 'yellow', 'green', 'green', 'white'],
                     beginAtZero: true,
                     font: {
                         size: 14
@@ -93,13 +92,13 @@ export default function SpotifyStats() {
     const data = {
         datasets: [
             {
-                label: 'idk yet',
+                label: 'Album',
                 data: calculatedData, 
                 backgroundColor: 'black',
             },
             {
                 type: 'line',
-                label: 'line test',
+                label: '',
                 data: regressionData,
                 pointRadius: 0,
                 borderColor: 'white',

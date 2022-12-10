@@ -209,7 +209,7 @@ export default function Scores() {
                         })}>Genre ▾</button></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody data-testid={`table-values`}>
                     {albums.map((album) => {
                         let score_color;
                         if (album.score >= 7) {

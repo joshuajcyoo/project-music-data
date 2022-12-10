@@ -47,25 +47,27 @@ export default function Comments() {
 
     return (
         <div className="display-comments">
-            <h3>Comments</h3>
+            <h3 id="comments-title">Comments</h3>
             
             <PostComment onSubmit={addComment}/>
 
-            {albumComments.map((comment) => {
-                return (
-                    <div className="comment">
-                        <div><u>User: {comment.name}</u></div>
-                        <p>{comment.body}</p>
-                        <div>Posted on {comment.timestamp}</div>
+            <div id="comment-section">
+                {albumComments.map((comment) => {
+                    return (
+                        <div className="comment">
+                            <div id="comment-user"><u>Username:</u> {comment.name}</div>
+                            <p id="comment-body">{comment.body}</p>
+                            <div id="comment-timestamp">Posted on {comment.timestamp}</div>
 
-                        <button className="btn btn-danger btn-sm" 
-                            onClick={() => {
-                                deleteComment(comment.id);
-                            }}
-                        >Delete</button>
-                    </div>
-                );
-            })}
+                            <button className="btn btn-danger btn-sm" id="comment-delete"
+                                onClick={() => {
+                                    deleteComment(comment.id);
+                                }}
+                            >Delete</button>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
     

@@ -7,53 +7,53 @@ export default function Rating(props) {
     let songLength;
     if (type == "Album") {
         descriptor = "Avg";
-        songLength = "Song"
+        songLength = "Song "
     } 
     else if (type == "Song") {
         descriptor = "Song";
-        songLength = ""
+        songLength = "";
     }
 
     return (
         <div id="rating">
-            <div id="rating-title"><span id="spotify">Spotify</span> Stats</div>
-            <div className="container" id="rating-container">
-                <div className="row">
+            <div data-testid="rating-title" id="rating-title"><span data-testid="rating-title-spotify" id="spotify">Spotify</span> Stats</div>
+            <div data-testid="stat-container" className="container" id="rating-container">
+                <div data-testid="stat-row1" className="row">
                     <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} {songLength} Length:</div>
-                        <div className="stat-stat">{length_formatted} / {length_seconds} s</div>
+                        <div data-testid="stat-length-title" className="stat-title">{descriptor} {songLength}Length:</div>
+                        <div data-testid="stat-length" className="stat-stat">{length_formatted} / {length_seconds} s</div>
                     </div>
                     <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} Tempo:</div> 
-                        <div className="stat-stat">{tempo_bpm} (bpm)</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} Popularity: </div>
-                        <div className="stat-stat">{popularity}</div>
-                    </div>
-                    <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} Danceability: </div>
-                        <div className="stat-stat">{danceability}</div>
-                    </div>
-                    <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} Energy: </div>
-                        <div className="stat-stat">{energy}</div>
+                        <div data-testid="stat-tempo-title" className="stat-title">{descriptor} Tempo:</div> 
+                        <div data-testid="stat-tempo" className="stat-stat">{tempo_bpm} (bpm)</div>
                     </div>
                 </div>
-                <div className="row">
+                <div data-testid="stat-row2" className="row">
                     <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} Positiveness: </div>
-                        <div className="stat-stat">{positiveness}</div>
+                        <div data-testid="stat-popularity-title" className="stat-title">{descriptor} Popularity:</div>
+                        <div data-testid="stat-popularity" className="stat-stat">{popularity}</div>
                     </div>
                     <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} Speechiness: </div>
-                        <div className="stat-stat">{speechiness}</div>
+                        <div data-testid="stat-danceability-title" className="stat-title">{descriptor} Danceability:</div>
+                        <div data-testid="stat-danceability" className="stat-stat">{danceability}</div>
                     </div>
                     <div className="col rating-container-col">
-                        <div className="stat-title">{descriptor} Liveness: </div>
-                        <div className="stat-stat">{liveness}</div>
+                        <div data-testid="stat-energy-title" className="stat-title">{descriptor} Energy:</div>
+                        <div data-testid="stat-energy" className="stat-stat">{energy}</div>
+                    </div>
+                </div>
+                <div data-testid="stat-row3" className="row">
+                    <div className="col rating-container-col">
+                        <div data-testid="stat-positiveness-title" className="stat-title">{descriptor} Positiveness:</div>
+                        <div data-testid="stat-positiveness" className="stat-stat">{positiveness}</div>
+                    </div>
+                    <div className="col rating-container-col">
+                        <div data-testid="stat-speechiness-title" className="stat-title">{descriptor} Speechiness:</div>
+                        <div data-testid="stat-speechiness" className="stat-stat">{speechiness}</div>
+                    </div>
+                    <div className="col rating-container-col">
+                        <div data-testid="stat-liveness-title" className="stat-title">{descriptor} Liveness:</div>
+                        <div data-testid="stat-liveness" className="stat-stat">{liveness}</div>
                     </div>
                 </div>
             </div>

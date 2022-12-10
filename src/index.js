@@ -16,6 +16,7 @@ import Comments from './Routes/Comments';
 import Admin from "./Routes/Admin";
 import Error404 from './Routes/Error404';
 
+// Requirement: Routing
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
         }
       },
       {
+        // Requirement: URL Parameter
         path: "/albums/:id/",
         element: <Album />,
         loader ({ params }) {
@@ -65,6 +67,7 @@ const router = createBrowserRouter([
         ]
       },
       {
+        // Requirement: URL Parameter
         path: "/songs/:id",
         element: <Song />,
         loader ({ params }) {
@@ -81,6 +84,7 @@ const router = createBrowserRouter([
     }
   },
   {
+    // Requirement: 404 Page
     path: "*",
     element: <Error404 />
   }

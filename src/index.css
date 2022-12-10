@@ -127,7 +127,7 @@ nav {
 #home-bottom {
   padding-top: 1%;
   background-color: #EFB457;
-  padding-bottom: 11%;
+  padding-bottom: 6%;
 }
 #home-about-title {
   padding-top: 3%;
@@ -136,11 +136,16 @@ nav {
   background-color: #EFB457;
   font-size: 175%;
 }
-#home-about {
+.home-about {
   padding-top: 1.5%;
   background-color: #EFB457;
-  font-size: 125%;
+  font-size: 110%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
+
 
 /* Scores.js & SpotifyStats.js */
 #spotify-stats {
@@ -433,6 +438,8 @@ nav {
 }
 #admin-album-table {
   color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 #admin-album-table tr {
   line-height: 20px;
@@ -485,24 +492,37 @@ nav {
 }
 #edit-albums {
   margin-top: 4%;
+  text-align: center;
 }
 .th-album-admin {
-  width: 65%;
+  width: 75%;
 }
 
 /* EditAlbum.js */
 #edit-album-form {
   width: 50%;
+  margin-top: 2%;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 .edit-album-click {
   text-decoration: underline;
   color: white;
   cursor: pointer;
 }
+#edit-album-button {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
 
 /* Error404.js */
 #skull-emoji {
   width: 100%;
+}
+#msg-404 {
+  padding-top: 3%;
+  font-size: 125%;
 }
 

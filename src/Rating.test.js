@@ -1,6 +1,7 @@
 import { render, fireEvent } from "@testing-library/react/";
 import Rating from "./Rating";
 
+// Requirement: 10 Tests
 test('component renders with baseline information', () => {
   const { getByText } = render(<Rating />);
   expect(getByText("Spotify")).toBeInTheDocument();

@@ -14,6 +14,7 @@ import {getCoordinates, getRegressionCoordinates} from "../StatData";
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 export default function SpotifyStats() {
+    // Requirement: Document Title
     document.title = "Explore Data by Stats";
 
     const compareId = (a, b) => {        

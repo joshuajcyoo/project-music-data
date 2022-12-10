@@ -6,8 +6,7 @@ function fetchFunction(url) {
         });
 }
 
-// FP Req: GET call
-
+// Requirement: GET call
 export function fetchAllAlbums() {
     return fetchFunction("http://localhost:3000/albums");
 }

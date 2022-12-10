@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import EditAlbum from "./EditAlbum";
 import Modal from "../Modal";
 
+// Extra Credit: Admin Page
 export default function Admin() { 
     document.tite = "Admin";
     
@@ -131,7 +132,8 @@ export default function Admin() {
 
         for (let commentDelete of selectedComments) {
             const commentId = parseInt(commentDelete.value);
-            console.log(`http://localhost:3000/comments/${commentId}`);
+            
+            // Requirement: DELETE call
             await fetch(
                 `http://localhost:3000/comments/${commentId}`, 
                 {method: "DELETE"}
@@ -144,6 +146,7 @@ export default function Admin() {
         }
         setNoneChecked(true);
 
+        // Requirement: Toastify Notification
         let toastMessage;
         if (selectedComments.length == grabAllComments.length) {
             toastMessage = "ALL COMMENTS SUCCESSFULLY DELETED!"

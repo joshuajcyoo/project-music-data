@@ -1,5 +1,5 @@
 
-// FP Req: Reusable Component w/ Prop(s)
+// Requirement: Reusable Component w/ Prop(s)
 export default function Rating(props) {
     const {type, length_formatted, length_seconds, tempo_bpm, popularity, danceability, energy, positiveness, speechiness, liveness} = props;
 

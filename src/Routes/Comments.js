@@ -4,7 +4,7 @@ import PostComment from "./PostComment";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// FP Req: Comment System
+// Additional Feature: Comment System
 export default function Comments() {
     const allComments = useLoaderData();
     const params = useParams();
@@ -30,7 +30,7 @@ export default function Comments() {
 
     const deleteComment = async (id) => {
         
-        // FP Req: DELETE call
+        // Requirement: DELETE call
         await fetch(
             `http://localhost:3000/comments/${id}`, 
             {method: "DELETE"}

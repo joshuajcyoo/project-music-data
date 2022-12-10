@@ -19,7 +19,7 @@ export default function PostComment(props) {
         const name = document.getElementById("post-comment-name").value;
         const body = document.getElementById("post-comment-body").value;
 
-        // FP Req: Custom Form Validation
+        // Requirement: Custom Form Validation
         if (!name && !body) {
             document.getElementById("name-error").className = "d-block text-danger";
             document.getElementById("body-error").className = "d-block text-danger";
@@ -44,7 +44,7 @@ export default function PostComment(props) {
             document.getElementById("post-comment-name").className = "form-control form-control-sm";
             document.getElementById("post-comment-body").className = "form-control form-control-sm";
 
-            // FP Req: POST call
+            // Requirement: POST call
             await fetch(
                 `http://localhost:3000/comments`, {
                 method: "POST",
@@ -66,6 +66,8 @@ export default function PostComment(props) {
             const id = findPostedComment[0].id;
 
             onSubmit(name, body, timestamp, id);
+
+            // Requirement: Toastify Notification
             toast.success('Comment successfully posted!', {
                 position: toast.POSITION.TOP_RIGHT
             });

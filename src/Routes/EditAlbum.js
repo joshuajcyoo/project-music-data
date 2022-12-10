@@ -26,6 +26,8 @@ export default function EditAlbum(props) {
 
         const grabAllFields = document.getElementsByClassName('edit-field');
         const grabAllErrorMsgs = document.getElementsByClassName('edit-album-error');
+        
+        // Requirement: Custom Form Validation
         for (let i = 0; i < grabAllFields.length; i++) {
             if (!grabAllFields[i].value) {
                 grabAllErrorMsgs[i].className = "text-danger edit-album-error";
@@ -46,6 +48,7 @@ export default function EditAlbum(props) {
             const number_of_tracks = parseInt(document.getElementById(numberOfTracksFieldId).value);
             const score = parseInt(document.getElementById(scoreFieldId).value);
 
+            // Requirement: PATCH call
             await fetch(
                 `http://localhost:3000/albums/${propAlbumId}`, {
                 method: "PATCH",
@@ -63,6 +66,7 @@ export default function EditAlbum(props) {
                 }
             );
 
+            // Requirement: Toastify Notification
             toast.warning('Album information successfully edited!', {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -95,7 +99,7 @@ export default function EditAlbum(props) {
             <input id={scoreFieldId} name="edit-score" className="form-control form-control-sm edit-field" type="text" defaultValue={propScore}/>
             <div className="d-none text-danger edit-album-error">{emptyFields}</div>
 
-            <button type="submit" className="btn btn-warning btn-sm">Edit Album</button>      
+            <button id="edit-album-button" type="submit" className="btn btn-dark btn-sm">Edit Album</button>      
         </form>
     );
 }

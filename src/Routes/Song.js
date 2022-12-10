@@ -4,6 +4,7 @@ import Rating from "../Rating";
 export default function Song() {
     const song = useLoaderData();
 
+    // Requirement: Document Title
     document.title = song.song_title + " / " + song.album;
     
     return (

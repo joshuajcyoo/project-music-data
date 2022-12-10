@@ -1,6 +1,7 @@
 import "./Modal.css";
 import { createPortal } from "react-dom";
 
+// Requirement: Modal
 export default function Modal(props) {
     return createPortal(
         <>

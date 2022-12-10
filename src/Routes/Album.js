@@ -4,6 +4,7 @@ import Rating from "../Rating";
 export default function Album() {    
     const album = useLoaderData();
 
+    // Requirement: Document Title
     document.title = album.album + " by " + album.artist;
 
     let scoreClass;

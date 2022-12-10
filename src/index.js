@@ -28,8 +28,8 @@ const router = createBrowserRouter([
       {
         path: "/stats",
         element: <SpotifyStats />,
-        loader({}) {
-          return;
+        loader () {
+          return fetchAllAlbums();
         }
       },
       {

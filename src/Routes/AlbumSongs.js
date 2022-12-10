@@ -10,31 +10,33 @@ export default function AlbumSongs() {
     
     return (
         <>
-            <table id="album-songs-table" className="table table-sm table-hover w-50">
-                <thead>
-                    <tr>
-                        <th className="th-song-number"></th>
-                        <th className="th-song-title">Song</th>
-                        <th className="th-song-length">Length</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {albumSongs.map((song) => {
-                        songNumber++;
-                        
-                        return (
-                            <tr>
-                                <td>{songNumber - 1}</td>
-                                <td>
-                                    <Link to={`/songs/${song.id}`} className="text-dark scores-link">{song.song_title}</Link>
-                                </td>
-                                <td>{song.song_length_formatted}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-
+            <div id="album-songs">
+                <div id="album-songs-title">Tracklist</div>
+                <table id="album-songs-table" className="table table-hover w-50">
+                    <thead>
+                        <tr>
+                            <th className="th-song-number"></th>
+                            <th className="th-song-title"></th>
+                            <th className="th-song-length"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {albumSongs.map((song) => {
+                            songNumber++;
+                            
+                            return (
+                                <tr>
+                                    <td>{songNumber - 1}</td>
+                                    <td>
+                                        <Link to={`/songs/${song.id}`} className="scores-link">{song.song_title}</Link>
+                                    </td>
+                                    <td>{song.song_length_formatted}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
             <Outlet/>
         </>
     );

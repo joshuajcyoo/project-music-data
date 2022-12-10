@@ -46,7 +46,6 @@ export default function EditAlbum(props) {
             const number_of_tracks = parseInt(document.getElementById(numberOfTracksFieldId).value);
             const score = parseInt(document.getElementById(scoreFieldId).value);
 
-            console.log(album, artist, release_date, genre, number_of_tracks, score);
             await fetch(
                 `http://localhost:3000/albums/${propAlbumId}`, {
                 method: "PATCH",

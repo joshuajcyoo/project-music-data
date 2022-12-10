@@ -11,14 +11,7 @@ import {
     Legend,
   } from 'chart.js';
 
-ChartJS.register(
-CategoryScale,
-LinearScale,
-BarElement,
-Title,
-Tooltip,
-Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function Scores() {
     document.title = "Explore Data by Scores";
@@ -34,6 +27,11 @@ export default function Scores() {
     }
     const compareArtist = (a, b) => {
         return a.artist.localeCompare(b.artist);
+    }
+    const compareReleaseDate = (a, b) => {
+        a = parseInt(a.release_date.slice(7, 11) + a.release_date.slice(0, 2) + a.release_date.slice(3, 5));
+        b = parseInt(b.release_date.slice(7, 11) + b.release_date.slice(0, 2) + b.release_date.slice(3, 5));
+        return b - a;
     }
     const compareGenre = (a, b) => {
         return a.genre.localeCompare(b.genre);
@@ -62,23 +60,35 @@ export default function Scores() {
             x: {
                 ticks: {
                     color: 'white',
-                    beginAtZero: true
+                    beginAtZero: true,
+                    font: {
+                        size: 14
+                    },
                 },
                 title: {
                     display: true,
-                    text: 'Album Score',
-                    color: 'white'
+                    text: 'Album Rating',
+                    color: 'white',
+                    font: {
+                        size: 18
+                    },
                 }
             },
             y: {
                 ticks: {
                     color: 'white',
-                    beginAtZero: true
+                    beginAtZero: true,
+                    font: {
+                        size: 14
+                    },
                 },
                 title: {
                     display: true,
                     text: 'Number of Albums Scored',
-                    color: 'white'
+                    color: 'white',
+                    font: {
+                        size: 18
+                    },
                 }
             }
         },
@@ -113,12 +123,12 @@ export default function Scores() {
     
     return (
     <div id="scores">
-        <div id="chart-wrapper">
+        <div className="chart-wrapper">
             <Bar options={options} data={data} />
         </div>
-        <div id="filters-title" className="d-flex justify-content-center">Filters</div>
-        <div id="scores-dropdowns" className="d-flex justify-content-center">
-            <select className="form-select form-select-sm" id="select-genre" value={chosenGenre} onChange={((event) => {
+        <div id="scores-filters-title" className="d-flex justify-content-center">Filters</div>
+        <div className="year-genre-dropdowns d-flex justify-content-center">
+            <select className="form-select form-select-sm" id="select-genre-scores" value={chosenGenre} onChange={((event) => {
                 setChosenGenre(event.target.value);
                 if (event.target.value === "All Genres") {
                     if (chosenYear == "All Years") {
@@ -148,7 +158,7 @@ export default function Scores() {
                 <option value="R&B/Soul">R&B/Soul</option>
             </select>
 
-            <select className="form-select form-select-sm" id="select-year" value={chosenYear} onChange={((event) => {
+            <select className="form-select form-select-sm" id="select-year-scores" value={chosenYear} onChange={((event) => {
                 setChosenYear(event.target.value);
                 if (event.target.value === "All Years") {
                     if (chosenGenre == "All Genres") {
@@ -180,36 +190,36 @@ export default function Scores() {
                         <th className="th-score"><button className="sort-albums-table" id="sort-score" onClick={(() => {
                             const scoresScore = [...albums].sort(compareScore);
                             setAlbums(scoresScore);
-                        })}>Score</button></th>
+                        })}>Score ▾</button></th>
                         <th className="th-album"><button className="sort-albums-table" onClick={(() => {
                             const scoresAlbum = [...albums].sort(compareAlbum);
                             setAlbums(scoresAlbum);
-                        })}>Album</button></th>
+                        })}>Album ▾</button></th>
                         <th className="th-artist"><button className="sort-albums-table" onClick={(() => {
                             const scoresArtist = [...albums].sort(compareArtist);
                             setAlbums(scoresArtist);
-                        })}>Artist</button></th>
+                        })}>Artist ▾</button></th>
                         <th className="th-release"><button className="sort-albums-table" onClick={(() => {
-                            const scoresRelease = albumData;
+                            const scoresRelease = [...albums].sort(compareReleaseDate);
                             setAlbums(scoresRelease);
-                        })}>Release Date</button></th>
+                        })}>Release Date ▾</button></th>
                         <th className="th-genre"><button className="sort-albums-table" onClick={(() => {
                             const scoresGenre = [...albums].sort(compareGenre);
                             setAlbums(scoresGenre);
-                        })}>Genre</button></th>
+                        })}>Genre ▾</button></th>
                     </tr>
                 </thead>
                 <tbody>
                     {albums.map((album) => {
                         let score_color;
                         if (album.score >= 7) {
-                            score_color = "text-success";
+                            score_color = "td-score text-success";
                         }
                         else if (album.score <= 3) {
-                            score_color = "text-danger";
+                            score_color = "td-score text-danger";
                         }
                         else {
-                            score_color = "text-warning"
+                            score_color = "td-score text-warning"
                         }
 
                         return (

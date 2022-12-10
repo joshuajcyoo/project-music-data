@@ -18,6 +18,7 @@
   font-family: Gogating Book Bold;
   src: url(Fonts/gogatingbold_a.ttf);
 }
+
 * {
   font-family: Gogating Book Bold;
 }
@@ -141,13 +142,18 @@ nav {
   font-size: 125%;
 }
 
-/* Scores.js */
+/* Scores.js & SpotifyStats.js */
+#spotify-stats {
+  background-color: #EFB457;
+  padding-top: 2%;
+  padding-bottom: 7%;
+}
 #scores {
   background-color: #EFB457;
-  padding-top: 3%;
+  padding-top: 2%;
   padding-bottom: 1%;
 }
-#chart-wrapper {
+.chart-wrapper {
   display: block;
   position: relative;
   width: 70%;
@@ -156,22 +162,41 @@ nav {
   margin-right: auto;
   border: 0.3px solid white;
 }
-#filters-title {
+#stats-stat-title {
   margin-top: 2%;
   font-size: 140%;
   color: white;
   margin-bottom: 0.5%;
 }
-#scores-dropdowns {
+#scores-filters-title {
+  margin-top: 1.5%;
+  font-size: 140%;
+  color: white;
+  margin-bottom: 0.5%;
+}
+#stats-filters-title {
+  margin-top: 1.75%;
+  color: white;
+  margin-bottom: 0.5%;
+}
+#stat-dropdown {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
-#select-genre {
+.year-genre-dropdowns {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#select-stat {
+  width: 25%;
+}
+#select-genre-scores, #select-genre-stats {
   width: 20%;
   margin-right: 1%;
 }
-#select-year {
+#select-year-scores, #select-year-stats {
   margin-left: 1%;
   width: 20%;
 }
@@ -179,12 +204,10 @@ nav {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3%;
+  margin-top: 2.5%;
   width: 60%;
-
-  border-top: 0.5px solid white;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 }
 #sort-score {
   color: white;
@@ -193,52 +216,176 @@ nav {
   background: none;
   border: none;
   font-weight: bold;
-  text-decoration: underline;
   color: white;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 #scores-table-header {
   background-color: black;
 }
 .th-score {
-  width: 8%;
+  width: 9%;
   color: black;
 }
-.th-album, .th-artist {
-  width: 30%;
+.th-album {
+  width: 35%;
+}
+.th-artist {
+  width: 25%;
 }
 .th-release {
   width: 17%;
 }
 #scores-table tr {
-  line-height: 14px;
+  line-height: 20px;
+}
+#scores-table thead, #scores-table tbody {
+  border-style: none;
 }
 #scores-table td, #scores-table a {
-  color: black;
+  color: white;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
+  border-style : hidden!important;
 }
 
-/* Album.js */
+/* Album.js & Song.js */
+#back-arrow {
+  background-color: #9B948B;
+  color: white;
+  font-size: 200%;
+  padding-left: 1.5%;
+  padding-top: 0.75%;
+}
+#back-arrow-link {
+  text-decoration: none;
+}
 #album {
   background-color: #9B948B;
+  color: white;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+#song {
+  background-color: #52442D;
   color: white;
   padding-top: 3%;
   padding-left: 5%;
   padding-right: 5%;
+  padding-bottom: 10%;
+}
+#album-title {
+  font-size: 260%;
+  width: 88%;
+}
+#song-title {
+  font-size: 270%;
+  margin-bottom: 0.7%;
+}
+#album-score {
+  font-size: 260%;
+  width: 12%;
+}
+#song a {
+  color: white;
+}
+#song-album {
+  font-size: 170%;
+  margin-bottom: 0.5%;
+  color: white;
+}
+#album-artist {
+  font-size: 170%;
+  margin-bottom: 1.5%;
+}
+#song-artist {
+  font-size: 140%;
+  margin-bottom: 1.5%;
+}
+#album-number-of-tracks, #album-release-date {
+  font-size: 120%;
+  margin-bottom: 0.4%;
+}
+#album-genre {
+  font-size: 120%;
+  margin-bottom: 1%;
+}
+#song-length {
+  font-size: 120%;
+  margin-bottom: 3%;
+}
+
+/* Rating.js */
+#rating {
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 60%;
+
+  color: white;
+}
+#rating-title {
+  font-size: 225%;
+  margin-bottom: 1%;
+}
+#spotify {
+  color: rgb(30, 215, 96);
+}
+#rating-container {
+  background-color: black;
+  border: 0.5px solid white;
+}
+.rating-container-col {
+  border: 0.5px solid #9B948B;
+  text-align: center;
+  padding-top: 0.5%;
+}
+.stat-title {
+  font-size: 90%;
+  color: rgb(30, 215, 96);
+}
+.stat-stat {
+  font-size: 140%;
+  color: white;
 }
 
 /* AlbumSongs.js */
+#album-songs {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#album-songs-title {
+  font-size: 210%;
+  padding-top: 1.5%;
+}
 .th-song-number {
-  width: 3%;
+  width: 10%;
+}
+.th-song-title {
+  width: 80%;
+}
+.th-song-length {
+  width: 10%;
 }
 #album-songs-table {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  color: white;
+}
+#album-songs-table .scores-link {
+  color: white;
+  font-size: 110%;
 }
 
 /* Admin.js */
 #admin {
   background-color: #EFB457;
   padding-bottom: 50%;
+  padding-left: 2%;
+  padding-top: 2%;
 }
 .display-comments {
   margin-top: 3%;
@@ -246,11 +393,6 @@ nav {
 }
 .comment {
   border: 1px solid black;
-}
-
-#admin {
-  padding-left: 2%;
-  padding-top: 2%;
 }
 #login-page {
   width: 50%;
@@ -294,7 +436,6 @@ nav {
   width: 65%;
 }
 
-
 /* EditAlbum.js */
 #edit-album-form {
   width: 50%;
@@ -306,18 +447,7 @@ nav {
   cursor: pointer;
 }
 
-/* Rating.js */
-#rating-container {
-  margin-left: auto;
-  margin-right: auto;
-
-  width: 60%;
-}
-.rating-container-col {
-  border: 1px solid black;
-  text-align: center;
-}
-
+/* Error404.js */
 #skull-emoji {
   width: 100%;
 }

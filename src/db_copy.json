@@ -15689,7 +15689,7 @@
     {
       "id": 84,
       "album": "Give Or Take",
-      "artist": "GIVĒON",
+      "artist": "GIVEON",
       "score": 5,
       "release_date": "06/24/2022",
       "genre": "R&B/Soul",
@@ -39204,6 +39204,13 @@
       "body": "i like Matty Healy's voice",
       "timestamp": "Sun Dec 04 2022 05:32:03",
       "id": 31
+    },
+    {
+      "album_id": "43",
+      "name": "momfan1",
+      "body": "RM is my favorite",
+      "timestamp": "Wed Dec 07 2022 21:04:15",
+      "id": 32
     }
   ],
   "users": [

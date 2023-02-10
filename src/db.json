@@ -16394,7 +16394,7 @@
       "id": 88,
       "album": "BORN PINK",
       "artist": "BLACKPINK",
-      "score": 4,
+      "score": 3,
       "release_date": "09/16/2022",
       "genre": "K-Pop",
       "avg_length": [
@@ -39176,13 +39176,6 @@
       "body": "love the soft quality of the album",
       "timestamp": "Fri Dec 02 2022 04:46:50",
       "id": 28
-    },
-    {
-      "album_id": "2",
-      "name": "test delete",
-      "body": "bell",
-      "timestamp": "Sat Dec 03 2022 21:23:09",
-      "id": 29
     },
     {
       "album_id": "92",

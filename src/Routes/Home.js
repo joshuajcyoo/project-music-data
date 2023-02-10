@@ -28,11 +28,11 @@ export default function Home() {
                 </div>
 
                 <div className="home-about d-flex justify-content-center">
-                    <div>About four years ago, my childhood friend asked me to start a music social media page with him, where our goal was to write album reviews on current releases and share the page with our circle of friends to start a fun side passion. We both were pretty with high school obligations at the time, so it didn't amount to much at the beginning.</div>
+                    <div>About four years ago, my childhood friend asked me to start a music social media page with him, where our goal was to write album reviews on current releases and share the page with our circle of friends to start a fun side passion. We both were pretty busy with high school obligations at the time, so it didn't amount to much at the beginning.</div>
                 </div>
 
                 <div className="home-about d-flex justify-content-center">
-                    <div>The pandemic hit, and out of the abundance of free time on my hand, I decided to give it another go, attempting to dedicate myself to uploading album reviews consistently. I'm surprised I've been able to keep that consistent upload streak to this very day, as I continue to write album reviews as a deep personal passion and important getaway from the stress of my current education.</div>
+                    <div>The pandemic hit, and out of the abundance of free time on my hand, I decided to give it another go, attempting to dedicate myself to uploading album reviews consistently. I'm surprised that I've been able to keep the consistent upload streak to this very day, as I continue to write album reviews as a deep personal passion and important getaway from the stresses of life.</div>
                 </div>
 
                 <div className="home-about d-flex justify-content-center">

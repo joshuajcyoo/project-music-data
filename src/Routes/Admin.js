@@ -11,6 +11,7 @@ export default function Admin() {
     
     // Login Variables
     const allUsers = useLoaderData();
+    console.log(allUsers);
     const emptyFields = "Fields must not be left blank.";
     const invalidEmail = "No account exists with the entered email.";
     const invalidPassword = "Password is incorrect.";

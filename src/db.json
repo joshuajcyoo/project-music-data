@@ -17148,6 +17148,193 @@
           8
         ]
       ]
+    },
+    {
+      "id": 93,
+      "album": "Luv 4 Rent",
+      "artist": "Smino",
+      "score": 8,
+      "release_date": "10/28/2022",
+      "genre": "Hip-Hop/Rap",
+      "avg_length": [
+        "3:23",
+        203
+      ],
+      "avg_tempo_bpm": 121.6,
+      "avg_popularity": 54.87,
+      "avg_danceability": 58.53,
+      "avg_energy": 57.07,
+      "avg_positiveness": 41.27,
+      "avg_speechiness": 22.47,
+      "avg_liveness": 28.6,
+      "number_of_tracks": 15,
+      "all_tracks": [
+        [
+          "4rm Da Source",
+          102,
+          170,
+          48,
+          36,
+          16,
+          36,
+          11,
+          37
+        ],
+        [
+          "No L's",
+          175,
+          131,
+          66,
+          79,
+          65,
+          49,
+          31,
+          13
+        ],
+        [
+          "90 Proof",
+          208,
+          148,
+          64,
+          77,
+          63,
+          55,
+          12,
+          14
+        ],
+        [
+          "Pro Freak",
+          268,
+          75,
+          59,
+          50,
+          64,
+          21,
+          47,
+          20
+        ],
+        [
+          "Ole Ass Kendrick",
+          143,
+          119,
+          54,
+          54,
+          51,
+          21,
+          8,
+          18
+        ],
+        [
+          "Louphoria",
+          226,
+          119,
+          57,
+          51,
+          44,
+          16,
+          10,
+          48
+        ],
+        [
+          "Blu Billy",
+          161,
+          72,
+          53,
+          62,
+          65,
+          67,
+          50,
+          51
+        ],
+        [
+          "Matinee",
+          188,
+          164,
+          57,
+          72,
+          83,
+          77,
+          13,
+          65
+        ],
+        [
+          "Modennaminute",
+          287,
+          80,
+          54,
+          44,
+          55,
+          33,
+          44,
+          22
+        ],
+        [
+          "Defibrillator",
+          213,
+          94,
+          49,
+          73,
+          66,
+          32,
+          34,
+          9
+        ],
+        [
+          "Garden Lady",
+          210,
+          185,
+          47,
+          40,
+          48,
+          52,
+          47,
+          65
+        ],
+        [
+          "Settle Down",
+          183,
+          147,
+          50,
+          62,
+          60,
+          59,
+          8,
+          32
+        ],
+        [
+          "Pudgy",
+          135,
+          99,
+          58,
+          78,
+          77,
+          48,
+          4,
+          13
+        ],
+        [
+          "Curtains",
+          383,
+          141,
+          50,
+          48,
+          31,
+          20,
+          9,
+          11
+        ],
+        [
+          "Lee & Lovie",
+          171,
+          80,
+          57,
+          52,
+          68,
+          33,
+          9,
+          11
+        ]
+      ]
     }
   ],
   "songs": [
@@ -39204,6 +39391,13 @@
       "body": "she has an amazing voice even though it's different than before",
       "timestamp": "Fri Dec 09 2022 23:30:25",
       "id": 34
+    },
+    {
+      "album_id": "93",
+      "name": "Emma Smith",
+      "body": "hewo",
+      "timestamp": "Sat Apr 15 2023 12:34:29",
+      "id": 35
     }
   ],
   "users": [
